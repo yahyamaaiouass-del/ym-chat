@@ -14,7 +14,7 @@ const io = new Server(server, {
 });
 
 const uploadDir = path.join(__dirname, "public", "uploads");
-if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+try { if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true }); } catch(e) {}
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, uploadDir),
