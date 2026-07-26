@@ -1,0 +1,28 @@
+[build]
+  functions = "netlify/functions"
+  publish = "public"
+  command = "npm install"
+
+[functions]
+  node_bundler = "esbuild"
+  included_files = ["public/**"]
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/upload"
+  to = "/.netlify/functions/server"
+  status = 200
+
+[[redirects]]
+  from = "/socket.io/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
