@@ -1,0 +1,11 @@
+run = "node server.js"
+entrypoint = "server.js"
+
+[env]
+PORT = "3000"
+
+[languages.javascript]
+pattern = "**/*.js"
+
+[nix]
+channel = "stable-24_05"
